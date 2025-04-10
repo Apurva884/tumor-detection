@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results - Brain Tumor Detection System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-icons@0.309.0/dist/umd/lucide.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain">
+                        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"></path>
+                        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"></path>
+                    </svg>
+                    <span>BrainTumorAI</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="upload.html" class="nav-link">Upload Scan</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Contact</a>
+                </nav>
+
+                <div class="desktop-buttons">
+                    <button class="btn btn-outline">Log In</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden">
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav hidden" id="mobileNav">
+            <div class="container">
+                <a href="index.html" class="mobile-nav-link">Home</a>
+                <a href="upload.html" class="mobile-nav-link">Upload Scan</a>
+                <a href="#" class="mobile-nav-link">About</a>
+                <a href="#" class="mobile-nav-link">Contact</a>
+                <div class="mobile-buttons">
+                    <button class="btn btn-outline w-full">Log In</button>
+                    <button class="btn btn-primary w-full">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="results-section">
+            <div class="container">
+                <a href="upload.html" class="back-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m12 19-7-7 7-7"></path>
+                        <path d="M19 12H5"></path>
+                    </svg>
+                    Back to Upload
+                </a>
+                
+                <div class="results-container">
+                    <!-- Left column - MRI scan and analysis summary -->
+                    <div class="results-sidebar">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="card-title">MRI Scan Analysis</h2>
+                                <p class="card-description">AI-powered tumor detection results</p>
+                            </div>
+                            <div class="card-content">
+                                <div class="scan-image">
+                                    <img src="placeholder-scan.jpg" alt="MRI Scan with tumor highlighted">
+                                </div>
+                                
+                                <div class="analysis-summary">
+                                    <div class="summary-item">
+                                        <span class="summary-label">Analysis Date:</span>
+                                        <span class="summary-value" id="analysisDate"></span>
+                                    </div>
+                                    
+                                    <div class="summary-item">
+                                        <span class="summary-label">Tumor Detected:</span>
+                                        <span class="badge badge-red">Yes</span>
+                                    </div>
+                                    
+                                    <div class="summary-item">
+                                        <span class="summary-label">Tumor Type:</span>
+                                        <span class="summary-value">Glioma</span>
+                                    </div>
+                                    
+                                    <div class="summary-item">
+                                        <span class="summary-label">AI Confidence:</span>
+                                        <span class="summary-value">92%</span>
+                                    </div>
+                                    
+                                    <div class="warning-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                                            <path d="M12 9v4"></path>
+                                            <path d="M12 17h.01"></path>
+                                        </svg>
+                                        <p>This is a demonstration only. Always consult with a qualified medical professional for actual diagnosis and treatment.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right column - Detailed information tabs -->
+                    <div class="results-main">
+                        <div class="tabs">
+                            <div class="tabs-list">
+                                <button class="tab-button active" data-tab="tumor-details">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"></path>
+                                        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"></path>
+                                    </svg>
+                                    Tumor Details
+                                </button>
+                                <button class="tab-button" data-tab="treatment">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" x2="8" y1="13" y2="13"></line>
+                                        <line x1="16" x2="8" y1="17" y2="17"></line>
+                                        <line x1="10" x2="8" y1="9" y2="9"></line>
+                                    </svg>
+                                    Treatment Options
+                                </button>
+                                <button class="tab-button" data-tab="doctors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M19 9h-5V4H8v5H3v11h16Z"></path>
+                                        <path d="M12 4v16"></path>
+                                        <path d="M8 9h8"></path>
+                                    </svg>
+                                    Find Specialists
+                                </button>
+                            </div>
+                            
+                            <div class="tab-content active" id="tumor-details">
+                                <div class="card mb-6">
+                                    <div class="card-header">
+                                        <h2 class="card-title">Glioma Overview</h2>
+                                        <p class="card-description">General information about this tumor type</p>
+                                    </div>
+                                    <div class="card-content">
+                                        <p class="mb-6">Gliomas are tumors that occur in the brain and spinal cord. They begin in the glial cells that surround and support nerve cells. Gliomas can be low grade (slow growing) or high grade (fast growing).</p>
+                                        
+                                        <div class="two-columns">
+                                            <div>
+                                                <h4 class="section-subtitle">Characteristics</h4>
+                                                <ul class="characteristics-list">
+                                                    <li>
+                                                        <span>Size:</span>
+                                                        <span>3.2 cm</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Location:</span>
+                                                        <span>Right frontal lobe</span>
+                                                    </li>
+                                                    <li>
+                                                        <span>Severity:</span>
+                                                        <div class="severity">
+                                                            <span class="severity-indicator severity-high"></span>
+                                                            <span>Grade III</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <span>AI Confidence:</span>
+                                                        <div class="confidence">
+                                                            <div class="progress-bar">
+                                                                <div class="progress-fill" style="width: 92%"></div>
+                                                            </div>
+                                                            <div class="confidence-value">92%</div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div>
+                                                <h4 class="section-subtitle">Common Symptoms</h4>
+                                                <ul class="bullet-list">
+                                                    <li>Headaches that become more frequent and severe</li>
+                                                    <li>Nausea or vomiting</li>
+                                                    <li>Vision problems, such as blurred vision</li>
+                                                    <li>Seizures</li>
+                                                    <li>Difficulty speaking</li>
+                                                    <li>Personality changes</li>
+                                                    <li>Weakness or numbness in a part of the body</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2 class="card-title">Detailed Analysis</h2>
+                                        <p class="card-description">AI-generated observations</p>
+                                    </div>
+                                    <div class="card-content">
+                                        <p class="mb-6">This appears to be a high-grade glioma with irregular borders and heterogeneous enhancement. The tumor shows signs of necrosis and surrounding edema.</p>
+                                        
+                                        <div class="two-columns">
+                                            <div>
+                                                <h4 class="section-subtitle">Risk Factors</h4>
+                                                <ul class="bullet-list">
+                                                    <li>Age (more common in adults)</li>
+                                                    <li>Exposure to radiation</li>
+                                                    <li>Family history of glioma</li>
+                                                    <li>Certain genetic syndromes</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div>
+                                                <h4 class="section-subtitle">Progression</h4>
+                                                <p>High-grade gliomas tend to grow rapidly and may spread to other parts of the brain. Early intervention is critical for improving outcomes.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-content" id="treatment">
+                                <div class="card mb-6">
+                                    <div class="card-header">
+                                        <h2 class="card-title">Recommended Treatment Plan</h2>
+                                        <p class="card-description">AI-generated treatment recommendations for Glioma</p>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="info-box">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <path d="M12 16v-4"></path>
+                                                <path d="M12 8h.01"></path>
+                                            </svg>
+                                            <p>These recommendations are based on general treatment protocols for Glioma. The optimal treatment plan should be determined by a medical team considering the individual patient's condition, preferences, and other health factors.</p>
+                                        </div>
+                                        
+                                        <h3 class="content-subtitle">Primary Recommendations</h3>
+                                        <div class="recommendations-grid">
+                                            <div class="recommendation-item">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                                </svg>
+                                                <div>
+                                                    <h4>Surgery</h4>
+                                                    <p>Recommended for this tumor type</p>
+                                                </div>
+                                            </div>
+                                            <div class="recommendation-item">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                                </svg>
+                                                <div>
+                                                    <h4>Radiation Therapy</h4>
+                                                    <p>Recommended for this tumor type</p>
+                                                </div>
+                                            </div>
+                                            <div class="recommendation-item">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                                </svg>
+                                                <div>
+                                                    <h4>Chemotherapy</h4>
+                                                    <p>Recommended for this tumor type</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="section-title">Treatment Options Explained</h3>
+                                
+                                <div class="card mb-4 card-highlighted">
+                                    <div class="card-header">
+                                        <div class="card-header-flex">
+                                            <h2 class="card-title">Surgery</h2>
+                                            <span class="recommended-badge">Recommended</span>
+                                        </div>
+                                        <p class="card-description">Surgical removal of the tumor, either partially or completely, depending on its location and size.</p>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="two-columns">
+                                            <div>
+                                                <h4 class="pros-heading">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                                    </svg>
+                                                    Benefits
+                                                </h4>
+                                                <ul class="pros-list">
+                                                    <li>Can remove or reduce tumor size immediately</li>
+                                                    <li>Provides tissue for accurate diagnosis</li>
+                                                    <li>May relieve symptoms caused by pressure</li>
+                                                    <li>Can be curative for some tumor types</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div>
+                                                <h4 class="cons-heading">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <circle cx="12" cy="12" r="10"></circle>
+                                                        <line x1="12" x2="12" y1="8" y2="12"></line>
+                                                        <line x1="12" x2="12.01" y1="16" y2="16"></line>
+                                                    </svg>
+                                                    Considerations
+                                                </h4>
+                                                <ul class="cons-list">
+                                                    <li>Invasive procedure with general risks of surgery</li>
+                                                    <li>May not be possible if tumor is in a critical area</li>
+                                                    <li>Recovery time can be significant</li>
+                                                    <li>May not remove all tumor cells</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mb-4 card-highlighted">
+                                    <div class="card-header">
+                                        <div class="card-header-flex">
+                                            <h2 class="card-title">Radiation Therapy</h2>
+                                            <span class="recommended-badge">Recommended</span>
+                                        </div>
+                                        <p class="card-description">Uses high-energy beams to kill tumor cells and shrink tumors. Can be delivered externally or internally.</p>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="two-columns">
+                                            <div>
+                                                <h4 class="pros-heading">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                                    </svg>
+                                                    Benefits
+                                                </h4>
+                                                <ul class="pros-list">
+                                                    <li>Non-invasive (external beam)</li>
+                                                    <li>Can target specific areas</li>
+                                                    <li>Effective for controlling tumor growth</li>
+                                                    <li>Can be used after surgery to kill remaining cells</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div>
+                                                <h4 class="cons-heading">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <circle cx="12" cy="12" r="10"></circle>
+                                                        <line x1="12" x2="12" y1="8" y2="12"></line>
+                                                        <line x1="12" x2="12.01" y1="16" y2="16"></line>
+                                                    </svg>
+                                                    Considerations
+                                                </h4>
+                                                <ul class="cons-list">
+                                                    <li>Side effects may include fatigue, hair loss, skin problems</li>
+                                                    <li>May cause damage to nearby healthy tissue</li>
+                                                    <li>Usually requires multiple treatment sessions</li>
+                                                    <li>Long-term side effects possible</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mb-4 card-highlighted">
+                                    <div class="card-header">
+                                        <div class="card-header-flex">
+                                            <h2 class="card-title">Chemotherapy</h2>
+                                            <span class="recommended-badge">Recommended</span>
+                                        </div>
+                                        <p class="card-description">Uses drugs to kill rapidly dividing cells, including tumor cells. Can be taken orally or intravenously.</p>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="two-columns">
+                                            <div>
+                                                <h4 class="pros-heading">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                                    </svg>
+                                                    Benefits
+                                                </h4>
+                                                <ul class="pros-list">
+                                                    <li>Can reach tumor cells throughout the body</li>
+                                                    <li>Effective for certain tumor types</li>
+                                                    <li>Can be combined with other treatments</li>
+                                                    <li>Options for different delivery methods</li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div>
+                                                <h4 class="cons-heading">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <circle cx="12" cy="12" r="10"></circle>
+                                                        <line x1="12" x2="12" y1="8" y2="12"></line>
+                                                        <line x1="12" x2="12.01" y1="16" y2="16"></line>
+                                                    </svg>
+                                                    Considerations
+                                                </h4>
+                                                <ul class="cons-list">
+                                                    <li>Side effects may include nausea, fatigue, hair loss</li>
+                                                    <li>May affect healthy rapidly dividing cells</li>
+                                                    <li>Blood-brain barrier may limit effectiveness</li>
+                                                    <li>Requires careful monitoring</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-content" id="doctors">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2 class="card-title">Find Specialists Near You</h2>
+                                        <p class="card-description">Locate neurosurgeons, oncologists, and other specialists who treat Glioma</p>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="location-search">
+                                            <div class="search-form">
+                                                <input type="text" id="locationInput" placeholder="Enter your city or zip code" class="location-input">
+                                                <button id="searchDoctorsBtn" class="btn btn-primary search-btn">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <circle cx="11" cy="11" r="8"></circle>
+                                                        <path d="m21 21-4.3-4.3"></path>
+                                                    </svg>
+                                                    Find Specialists
+                                                </button>
+                                            </div>
+                                            
+                                            <div id="searchInitial" class="search-initial">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                    <circle cx="12" cy="10" r="3"></circle>
+                                                </svg>
+                                                <p class="search-title">Enter your location to find specialists</p>
+                                                <p class="search-subtitle">We'll help you find doctors who specialize in treating Glioma</p>
+                                            </div>
+                                            
+                                            <div id="doctorResults" class="doctor-results hidden">
+                                                <h3 class="results-title">Specialists near <span id="locationDisplay">you</span></h3>
+                                                
+                                                <div class="doctor-card">
+                                                    <div class="doctor-info">
+                                                        <div class="doctor-header">
+                                                            <div>
+                                                                <h4 class="doctor-name">Dr. Sarah Johnson</h4>
+                                                                <p class="doctor-specialty">Neurosurgeon</p>
+                                                                <p class="doctor-hospital">Memorial Neurological Center</p>
+                                                            </div>
+                                                            <div class="doctor-rating">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                </svg>
+                                                                <span class="rating-value">4.9</span>
+                                                                <span class="rating-count">(127)</span>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="doctor-details">
+                                                            <div class="detail-item">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                                    <circle cx="12" cy="10" r="3"></circle>
+                                                                </svg>
+                                                                <div>
+                                                                    <p>123 Medical Parkway, New York, NY 10001</p>
+                                                                    <p class="detail-secondary">1.2 miles away</p>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="detail-item">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                                                </svg>
+                                                                <p>(212) 555-1234</p>
+                                                            </div>
+                                                            
+                                                            <div class="detail-item">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                                                    <path d="M2 12h20"></path>
+                                                                </svg>
+                                                                <p class="website-link">www.memorialneurocenter.org</p>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="doctor-expertise">
+                                                            <p class="expertise-label">Expertise:</p>
+                                                            <div class="expertise-tags">
+                                                                <span class="expertise-tag">Glioma</span>
+                                                                <span class="expertise-tag">Meningioma</span>
+                                                                <span class="expertise-tag">Brain Surgery</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="doctor-actions">
+                                                        <button class="btn btn-primary w-full mb-2">Book Appointment</button>
+                                                        <button class="btn btn-outline w-full">View Profile</button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="doctor-card">
+                                                    <div class="doctor-info">
+                                                        <div class="doctor-header">
+                                                            <div>
+                                                                <h4 class="doctor-name">Dr. Michael Chen</h4>
+                                                                <p class="doctor-specialty">Neuro-Oncologist</p>
+                                                                <p class="doctor-hospital">University Medical Center</p>
+                                                            </div>
+                                                            <div class="doctor-rating">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                </svg>
+                                                                <span class="rating-value">4.7</span>
+                                                                <span class="rating-count">(93)</span>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="doctor-details">
+                                                            <div class="detail-item">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                                                    <circle cx="12" cy="10" r="3"></circle>
+                                                                </svg>
+                                                                <div>
+                                                                    <p>456 Health Avenue, New York, NY 10002</p>
+                                                                    <p class="detail-secondary">2.5 miles away</p>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="detail-item">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                                                </svg>
+                                                                <p>(212) 555-5678</p>
+                                                            </div>
+                                                            
+                                                            <div class="detail-item">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                                                    <path d="M2 12h20"></path>
+                                                                </svg>
+                                                                <p class="website-link">www.universitymedical.org</p>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="doctor-expertise">
+                                                            <p class="expertise-label">Expertise:</p>
+                                                            <div class="expertise-tags">
+                                                                <span class="expertise-tag">Glioma</span>
+                                                                <span class="expertise-tag">Chemotherapy</span>
+                                                                <span class="expertise-tag">Clinical Trials</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="doctor-actions">
+                                                        <button class="btn btn-primary w-full mb-2">Book Appointment</button>
+                                                        <button class="btn btn-outline w-full">View Profile</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn btn-primary">Download Report</button>
+                            <button class="btn btn-outline">Share with Doctor</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Brain Tumor AI</h3>
+                    <p>Advanced AI-powered brain tumor detection and analysis system.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="upload.html">Upload Scan</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <address>
+                        <p>Email: info@braintumorai.com</p>
+                        <p>Phone: (123) 456-7890</p>
+                        <p>Address: 123 Medical Center Dr, Health City, HC 12345</p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Brain Tumor AI Detection System. All rights reserved.</p>
+                <p>This is a demonstration website. Not for actual medical diagnosis.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="results.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload MRI Scan - Brain Tumor Detection System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-icons@0.309.0/dist/umd/lucide.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain">
+                        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"></path>
+                        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04Z"></path>
+                    </svg>
+                    <span>BrainTumorAI</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="upload.html" class="nav-link active">Upload Scan</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Contact</a>
+                </nav>
+
+                <div class="desktop-buttons">
+                    <button class="btn btn-outline">Log In</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden">
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav hidden" id="mobileNav">
+            <div class="container">
+                <a href="index.html" class="mobile-nav-link">Home</a>
+                <a href="upload.html" class="mobile-nav-link active">Upload Scan</a>
+                <a href="#" class="mobile-nav-link">About</a>
+                <a href="#" class="mobile-nav-link">Contact</a>
+                <div class="mobile-buttons">
+                    <button class="btn btn-outline w-full">Log In</button>
+                    <button class="btn btn-primary w-full">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="upload-section">
+            <div class="container">
+                <h1 class="page-title">Upload Your MRI Scan</h1>
+                <p class="page-description">Upload your brain MRI scan for AI-powered analysis. We accept JPEG, PNG, and DICOM file formats.</p>
+                
+                <div class="upload-container">
+                    <div class="card">
+                        <div class="card-content">
+                            <div id="uploadDropzone" class="upload-dropzone">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="upload-icon">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="17 8 12 3 7 8"></polyline>
+                                    <line x1="12" x2="12" y1="3" y2="15"></line>
+                                </svg>
+                                <p class="upload-title">Drag & drop your MRI scan here</p>
+                                <p class="upload-subtitle">or click to browse files</p>
+                                <button class="btn btn-outline upload-btn">Select File</button>
+                                <input type="file" id="fileInput" class="file-input" accept="image/jpeg,image/png,application/dicom" />
+                            </div>
+                            
+                            <div id="filePreview" class="file-preview hidden">
+                                <div class="file-info">
+                                    <div id="previewImage" class="preview-image"></div>
+                                    <div class="file-details">
+                                        <p id="fileName" class="file-name"></p>
+                                        <p id="fileSize" class="file-size"></p>
+                                    </div>
+                                    <button id="removeFile" class="remove-file-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M18 6 6 18"></path>
+                                            <path d="m6 6 12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                
+                                <div id="uploadProgress" class="upload-progress hidden">
+                                    <div class="progress-bar">
+                                        <div id="progressFill" class="progress-fill"></div>
+                                    </div>
+                                    <div class="progress-info">
+                                        <span class="progress-status">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="loader">
+                                                <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+                                            </svg>
+                                            Processing scan...
+                                        </span>
+                                        <span id="progressPercent" class="progress-percent">0%</span>
+                                    </div>
+                                </div>
+                                
+                                <button id="analyzeBtn" class="btn btn-primary w-full">Analyze MRI Scan</button>
+                            </div>
+                            
+                            <div id="uploadError" class="upload-error hidden">
+                                <div class="error-content">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" x2="12" y1="8" y2="12"></line>
+                                        <line x1="12" x2="12.01" y1="16" y2="16"></line>
+                                    </svg>
+                                    <span id="errorMessage">An error occurred while processing your scan. Please try again.</span>
+                                </div>
+                            </div>
+                            
+                            <div class="upload-instructions">
+                                <h3>Instructions:</h3>
+                                <ul>
+                                    <li>Upload a clear, high-resolution MRI scan of the brain</li>
+                                    <li>Ensure the file is in JPEG, PNG, or DICOM format</li>
+                                    <li>Maximum file size: 10MB</li>
+                                    <li>For best results, use axial (horizontal) view scans</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="privacy-note">
+                                <p>
+                                    <strong>Privacy Note:</strong> All uploaded scans are processed securely. Your data is never shared with third parties and is encrypted during transmission and storage.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Brain Tumor AI</h3>
+                    <p>Advanced AI-powered brain tumor detection and analysis system.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="upload.html">Upload Scan</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <address>
+                        <p>Email: info@braintumorai.com</p>
+                        <p>Phone: (123) 456-7890</p>
+                        <p>Address: 123 Medical Center Dr, Health City, HC 12345</p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Brain Tumor AI Detection System. All rights reserved.</p>
+                <p>This is a demonstration website. Not for actual medical diagnosis.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="upload.js"></script>
+</body>
+</html>
