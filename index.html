@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-icons@0.309.0/dist/umd/lucide.min.css">
+    <style>
+        /* Added styles for hero section with image */
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .hero .container {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -25,8 +38,8 @@
                 <nav class="desktop-nav">
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="upload.html" class="nav-link">Upload Scan</a>
-                    <a href="#" class="nav-link">About</a>
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
                 </nav>
 
                 <div class="desktop-buttons">
@@ -54,8 +67,8 @@
             <div class="container">
                 <a href="index.html" class="mobile-nav-link">Home</a>
                 <a href="upload.html" class="mobile-nav-link">Upload Scan</a>
-                <a href="#" class="mobile-nav-link">About</a>
-                <a href="#" class="mobile-nav-link">Contact</a>
+                <a href="#about" class="mobile-nav-link">About</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
                 <div class="mobile-buttons">
                     <button class="btn btn-outline w-full">Log In</button>
                     <button class="btn btn-primary w-full">Sign Up</button>
@@ -79,6 +92,9 @@
                             <path d="m12 5 7 7-7 7"></path>
                         </svg>
                     </a>
+                </div>
+                <div style="flex: 1; text-align: right;">
+                    <img src="https://cancerdoctorpune.com/wp-content/uploads/2021/11/BrainTumor-1250205787.jpg" alt="Brain MRI scan showing a tumor" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
                 </div>
             </div>
         </section>
@@ -226,7 +242,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-column">
+                <div class="footer-column" id="about">
                     <h3>Brain Tumor AI</h3>
                     <p>Advanced AI-powered brain tumor detection and analysis system.</p>
                 </div>
@@ -235,8 +251,8 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="upload.html">Upload Scan</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -248,7 +264,7 @@
                         <li><a href="#">Terms of Service</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
+                <div class="footer-column" id="contact">
                     <h4>Contact</h4>
                     <address>
                         <p>Email: info@braintumorai.com</p>
